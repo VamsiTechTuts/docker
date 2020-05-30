@@ -38,7 +38,7 @@ Here my domain is "nexus.vamsitechtuts.tk". Creating certificate for this domain
 Open SSL free website and register:
 Click on New certificate
 
-![2](https://user-images.githubusercontent.com/63221837/83320258-546b4Keep domain name and click on Create Free SSL Certificate680-a263-11ea-8562-949e668a5f34.png)
+![2](https://user-images.githubusercontent.com/63221837/83320258-546b4680-a263-11ea-8562-949e668a5f34.png)
 
 Keep domain name and click on Next Step
 
