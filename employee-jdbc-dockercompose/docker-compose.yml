@@ -3,7 +3,7 @@ version: "3"
 services:
 
   employee-jdbc:
-    image: naresh240/employee-jdbc-dockercompose:latest
+    image: vamsitechtuts/employee-jdbc-dockercompose:latest
     container_name: employee-jdbc
     restart: always
     ports:
@@ -21,8 +21,8 @@ services:
       - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=Naresh#240
-      - MYSQL_USER=naresh
-      - MYSQL_PASSWORD=Naresh#240
+      - MYSQL_USER=vamsitechtuts
+      - MYSQL_PASSWORD=Test#240
       - MYSQL_DATABASE=mysqldb
 
 volumes:
