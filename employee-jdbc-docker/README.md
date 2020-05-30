@@ -42,13 +42,13 @@ Mysql Login
     mysql -u root -p
 Change password for root user:
 --------
-    ALTER USER 'root'@'localhost' IDENTIFIED BY 'Naresh#240';
+    ALTER USER 'root'@'localhost' IDENTIFIED BY 'Test#240';
 Create User and Provide Remote access:
 -----------
-    create user 'naresh'@'localhost' IDENTIFIED BY 'Naresh#240';
-    GRANT ALL PRIVILEGES ON *.* TO 'naresh'@'localhost' WITH GRANT OPTION;
-    create user 'naresh'@'%' IDENTIFIED BY 'Naresh#240';
-    GRANT ALL PRIVILEGES ON *.* TO 'naresh'@'%' WITH GRANT OPTION;
+    create user 'vamsitechtuts'@'localhost' IDENTIFIED BY 'Test#240';
+    GRANT ALL PRIVILEGES ON *.* TO 'vamsitechtuts'@'localhost' WITH GRANT OPTION;
+    create user 'vamsitechtuts'@'%' IDENTIFIED BY 'Test#240';
+    GRANT ALL PRIVILEGES ON *.* TO 'vamsitechtuts'@'%' WITH GRANT OPTION;
     FLUSH PRIVILEGES;
 Create Database in Mysql:
 ------
@@ -67,16 +67,16 @@ Build Maven Artifact:
     mvn clean install
 Build Docker image for Springboot Application
 --------------
-    docker build -t naresh240/employee-jdbc-docker .
+    docker build -t vamsitechtuts/employee-jdbc-docker .
 Docker login
 -------------
     docker login
 Push docker image to dockerhub
 -----------
-    docker push naresh240/employee-jdbc-docker
+    docker push vamsitechtuts/employee-jdbc-docker
 Deploy employee-jdbc application using docker run command:
 -----------
-    docker run --name employee-jdbc-docker -p 8080:8080 -d naresh240/employee-jdbc:latest
+    docker run --name employee-jdbc-docker -p 8080:8080 -d vamsitechtuts/employee-jdbc:latest
 POST Method you can check in POSTMAN App:
 -------
     http://100.25.181.219:8080/insertemployee
