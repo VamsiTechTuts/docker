@@ -68,7 +68,7 @@ Replace nginx.conf file with below data:
 -------
     cd /etc/nginx/
     >nginx.conf 
-    curl https://raw.githubusercontent.com/VamsiTechTuts/dockerregistrywithdomain/master/nginx.conf >> /etc/nginx/nginx.conf
+    curl https://raw.githubusercontent.com/VamsiTechTuts/docker/master/dockerregistrywithdomain/nginx.conf >> /etc/nginx/nginx.conf
 Replace server_name with our domain name and save the file
 Create server.crt and server.key files with certificate files:
 -----------------
