@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+
+  employee-jdbc:
+    image: naresh240/employee-jdbc-dockerswarm:latest
+    ports:
+      - 8080:8080
+    networks:
+      - employee-jdbc
+    depends_on:
+      - mysqldb
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
+
+  mysqldb:
+    image: mysql:5.7
+    volumes:
+     - dbdata:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - employee-jdbc
+    environment:
+      - MYSQL_ROOT_PASSWORD=Naresh#240
+      - MYSQL_USER=naresh
+      - MYSQL_PASSWORD=Naresh#240
+      - MYSQL_DATABASE=mysqldb
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+volumes:
+  dbdata:
+
+networks:
+  employee-jdbc:

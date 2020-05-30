@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  employee-jdbc:
+    image: naresh240/employee-jdbc-dockercompose:latest
+    container_name: employee-jdbc
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysqldb
+    volumes:
+     - dbdata:/var/lib/mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=Naresh#240
+      - MYSQL_USER=naresh
+      - MYSQL_PASSWORD=Naresh#240
+      - MYSQL_DATABASE=mysqldb
+
+volumes:
+  dbdata:

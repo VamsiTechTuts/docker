@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Implementation-Title: spring-jpa-hibernate-example
+Implementation-Version: 0.0.1-SNAPSHOT
+Archiver-Version: Plexus Archiver
+Built-By: root
+Implementation-Vendor-Id: com.techprimers.jpa
+Spring-Boot-Version: 1.5.3.RELEASE
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: org.springframework.boot.loader.JarLauncher
+Start-Class: com.javainuse.SpringBootHelloWorldApplication
+Spring-Boot-Classes: BOOT-INF/classes/
+Spring-Boot-Lib: BOOT-INF/lib/
+Created-By: Apache Maven 3.6.3
+Build-Jdk: 1.8.0_252
+Implementation-URL: http://projects.spring.io/spring-boot/spring-jpa-h
+ ibernate-example/
+
