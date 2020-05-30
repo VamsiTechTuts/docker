@@ -34,8 +34,10 @@ Open Route53 and create new record set with our IP address
 
 Open SSL Free website and create certificate for our domain:
 -----------
-Here my domain is "nexus.vamsitechtuts.tk". Creating certificate for this domain
-Open SSL free website and register:
+Here my domain is "nexus.vamsitechtuts.tk", Creating certificate for this domain
+SSL for free website and register:
+    
+    https://www.sslforfree.com/
 Click on New certificate
 
 ![2](https://user-images.githubusercontent.com/63221837/83320258-546b4680-a263-11ea-8562-949e668a5f34.png)
