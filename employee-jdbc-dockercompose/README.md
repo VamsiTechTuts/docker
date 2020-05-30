@@ -44,20 +44,20 @@ Build Maven Artifact:
     mvn clean install
 Build Docker image for Springboot Application
 --------------
-    docker build -t naresh240/employee-jdbc-dockercompose .
+    docker build -t vamsitechtuts/employee-jdbc-dockercompose .
 Docker login
 -------------
     docker login
 Push docker image to dockerhub
 -----------
-    docker push naresh240/employee-jdbc-dockercompose
+    docker push vamsitechtuts/employee-jdbc-dockercompose
 Check docker container:
 -----
     docker ps 
 Connect to mysql container and Create employeee table:
 -------------
     docker exec -it <containerid> /bin/bash
-    mysql -u naresh -p
+    mysql -u vamsitechtuts -p
     create table employee(empId varchar(40), empName varchar(40));
 Deploy employee-jdbc application using docker run command:
 -----------
