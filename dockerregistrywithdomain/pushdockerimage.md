@@ -1,3 +1,4 @@
+# Push docker image to docker registry
 To push docker image to docker registry we need to create docker repository with in the docker registry
 Goto Docker Registry and click on settings
 ![1](https://user-images.githubusercontent.com/63221837/83322866-9357c700-a278-11ea-8cac-2f42b7062868.png)
