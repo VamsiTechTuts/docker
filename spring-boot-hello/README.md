@@ -154,6 +154,7 @@ Pull docker image:
 --------
     docker pull 54.82.177.131:5000/dockerrepo/spring-boot-hello
 Run spring-boot application with in 2nd server:
+----------
     docker run --name spring-boot-hello -p 80:8080 -d 54.82.177.131:5000/dockerrepo/spring-boot-hello:latest
 Goto web UI and check output of spring boot application:
 -------
