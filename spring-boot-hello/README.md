@@ -2,12 +2,68 @@
 
 Pre-requisites:
 -----
-  - Install Java
-  - Install GIT
-  - Install Maven
-  - Install Docker
-  - EKS Cluster setup
+    - Install Java
+    - Install GIT
+    - Install Maven
+    - Install Docker
+Install Java:
+------
+    yum install java-1.8.0-openjdk-devel -y
+Install Git:
+-------
+    yum install git -y
+Install Apache-Maven:
+-------------
+	  wget https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+	  tar xvzf apache-maven-3.6.3-bin.tar.gz
+	
+	  vi /etc/profile.d/maven.sh
+	  --------------------------------------------
+	  export MAVEN_HOME=/opt/apache-maven-3.6.3
+	  export PATH=$PATH:$MAVEN_HOME/bin
+	  --------------------------------------------
+	
+	  source /etc/profile.d/maven.sh
+	  mvn -version
+Installation of Nexus:
+-----------------
+Download nexus tar file:
+	  
+    cd /opt
+    wget https://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.0.2-02-unix.tar.gz
+Extract tar file:
+
+    tar xvzf nexus-3.0.2-02-unix.tar.gz
+Change name of Nexus file:
+	
+    mv nexus-3.0.2-02 nexus
+Add nexus user: 
+	  
+    useradd nexus
+Change owner ship for nexus file:
+	  
+    chown -R nexus:nexus nexus
+Open /opt/nexus/bin/nexus.rc file and update data like as below:
+    
+    vi /opt/nexus/bin/nexus.rc
+    run_as_user="nexus"
+
+Make Soft link:
+
+    ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
+Login to nexus user:
   
+    su - nexus
+Start nexus server:
+
+    service nexus start
+Check status of nexus:
+
+    service nexus status
+Install Docker:
+------
+    yum install docker -y
+    service docker start
 Clone code from github:
 -------------
     git clone https://github.com/Naresh240/spring-boot-hello.git
@@ -24,43 +80,3 @@ Docker login:
 Push docker image to dockerhub:
 --------
     docker push naresh240/spring-boot-hello:latest
-Deploy Springboot Application on EKS-Cluster:
-------------
-    kubectl apply -f deployement.yml
-Expose Springboot Application with LoadBalancer service:
------------
-    kubectl apply -f loadbalancer-service.yml
-Expose Springboot Application with LoadBalancer service:
------------
-    kubectl apply -f nodeport-service.yml
-Check Deployments:
---------
-    kubectl get deployments
-Check pods:
---------
-    kubectl get pods
-Check Services:
---------
-    kubectl get svc
-![1](https://user-images.githubusercontent.com/63221837/82745663-9ba99100-9da4-11ea-8eb3-7f61b960e1d5.png)
-Open EC2 Service of AWS:
-------------
-![2](https://user-images.githubusercontent.com/63221837/82745664-9ba99100-9da4-11ea-927a-e5f3c5181a51.png)
-Click on security group of Node and allow NoadPort:
-------------
-![3](https://user-images.githubusercontent.com/63221837/82745665-9c422780-9da4-11ea-8f5b-bd211e41da68.png)
-Check Nodeport service with web UI:
-----------
-    http://3.219.240.202:30001/
-![4](https://user-images.githubusercontent.com/63221837/82745666-9cdabe00-9da4-11ea-9f1a-3e1e62a3117f.png)
-Check wether LoadBalancer came Inservice or not:
-Goto EC2 serice and click on Load balancer
-![5](https://user-images.githubusercontent.com/63221837/82745659-99dfcd80-9da4-11ea-9984-9df224e7d338.png)
-Check Load balancer service with web UI:
---------------
-    http://a9e4ed685a62e47fab8f7f2b1c36078d-461031710.us-east-1.elb.amazonaws.com:8080/
-![6](https://user-images.githubusercontent.com/63221837/82745662-9b10fa80-9da4-11ea-847f-3a1eeef251be.png)
-Clean UP:
-------
-    kubectl delete svc spring-boot-hello-loadbalancer spring-boot-hello-nodeport
-    kubectl delete deployments spring-boot-hello
