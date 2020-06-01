@@ -6,6 +6,9 @@ Pre-requisites:
     - Install GIT
     - Install Maven
     - Install Docker
+Allow ports in first server:
+--------
+![2](https://user-images.githubusercontent.com/63221837/83428679-7d046380-a450-11ea-849d-69ee87a3e9ab.png)
 Install Java:
 ------
     yum install java-1.8.0-openjdk-devel -y
@@ -94,7 +97,17 @@ Click on docker(hosted)
 
 Give details as shown in figure and Click on Create Repository
 
-![1](https://user-images.githubusercontent.com/63221837/83322985-3f99ad80-a279-11ea-84d8-fee1ced5026d.png)
+![1](https://user-images.githubusercontent.com/63221837/83427110-d4550480-a44d-11ea-95c1-2a166f3b8381.png)
+
+Now create "/etc/docker/daemon.json" file and keep data like as show below
+--------------
+	vi /etc/docker/daemon.json
+	-----------------------------------------------------
+	{ "insecure-registries" : [ "54.82.177.131:5000" ] }
+	------------------------------------------------------
+Then Reastart Docker:
+--------
+	service docker restart
 
 Clone code from github:
 -------------
@@ -105,10 +118,44 @@ Build Maven Artifact:
     mvn clean install
 Build Docker image for Springboot Application:
 ------------
-    docker build -t naresh240/spring-boot-hello:latest .
+    docker build -t spring-boot-hello:latest .
 Docker login:
 -------
-    docker login
+    docker login http://54.82.177.131:5000
+Tag docker image with docker registry:
+-------------
+    docker tag spring-boot-hello:latest 54.82.177.131:5000/dockerrepo/spring-boot-hello:latest
 Push docker image to dockerhub:
 --------
-    docker push naresh240/spring-boot-hello:latest
+    docker push 54.82.177.131:5000/dockerrepo/spring-boot-hello:latest
+Check whether the image pushed to docker registry or not:
+-------------
+![1](https://user-images.githubusercontent.com/63221837/83427951-2cd8d180-a44f-11ea-8b65-21b595361288.png)
+
+Now pull docker image from another server:
+------------
+Allow ports with in 2nd server
+![2](https://user-images.githubusercontent.com/63221837/83429055-19c70100-a451-11ea-9eb3-f5833c03027b.png)
+
+Install docker with in second server also.
+Now create "/etc/docker/daemon.json" file and keep data like as show below
+
+	vi /etc/docker/daemon.json
+	-----------------------------------------------------
+	{ "insecure-registries" : [ "54.82.177.131:5000" ] }
+	------------------------------------------------------
+Then Reastart Docker:
+--------
+	service docker restart
+Docker login:
+-------
+    docker login http://54.82.177.131:5000
+Pull docker image:
+--------
+    docker pull 54.82.177.131:5000/dockerrepo/spring-boot-hello
+Run spring-boot application with in 2nd server:
+    docker run --name spring-boot-hello -p 80:8080 -d 54.82.177.131:5000/dockerrepo/spring-boot-hello:latest
+Goto web UI and check output of spring boot application:
+-------
+    http://52.3.244.222/
+![1](https://user-images.githubusercontent.com/63221837/83429057-1a5f9780-a451-11ea-89ca-49ea14579d2e.png)
