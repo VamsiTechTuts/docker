@@ -22,5 +22,6 @@ steps:
     goals: 'install'
 - task: Docker@2
   inputs:
-    command: 'build'
+    repository: 'springbootrepo'
+    command: 'buildAndPush'
     Dockerfile: 'spring-boot-hello/Dockerfile'
