@@ -18,5 +18,5 @@ steps:
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
-    testResultsFiles: '**/target/*.jar'
-    goals: 'package'
+    testResultsFiles: 'spring-boot-hello/target/*.jar'
+    goals: 'install'
