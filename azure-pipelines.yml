@@ -1,15 +1,10 @@
 - task: Maven@3
   inputs:
-    mavenPomFile: 'spring-boot-hello/pom.xml'
-    goals: 'install'
+    mavenPomFile: 'springboot/pom.xml'
     publishJUnitResults: true
-    testResultsFiles: '**/target/*.jar'
+    testResultsFiles: '**/surefire-reports/*jar'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-- task: Docker@2
-  inputs:
-    command: 'build'
-    Dockerfile: '**/Dockerfile'
