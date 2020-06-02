@@ -20,8 +20,5 @@ steps:
     publishJUnitResults: true
     testResultsFiles: 'spring-boot-hello/target/*.jar'
     goals: 'install'
-- task: Docker@2
-  inputs:
-    repository: 'springbootrepo'
-    command: 'buildAndPush'
-    Dockerfile: 'spring-boot-hello/Dockerfile'
+
+
