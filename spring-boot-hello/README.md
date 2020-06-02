@@ -6,6 +6,7 @@ Pre-requisites:
     - Install GIT
     - Install Maven
     - Install Docker
+    - Install Nexus
 Allow ports in first server:
 --------
 ![2](https://user-images.githubusercontent.com/63221837/83428679-7d046380-a450-11ea-849d-69ee87a3e9ab.png)
