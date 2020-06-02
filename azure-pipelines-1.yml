@@ -15,4 +15,7 @@ steps:
   displayName: Login to ACR
   inputs:
     command: login
-    containerRegistry: springbootrepo
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'Free Trial(d7db3834-24d9-44cb-9cdc-4cda4f5bbdb8)'
+    azureContainerRegistry: '{"loginServer":"springbootrepo.azurecr.io", "id" : "/subscriptions/d7db3834-24d9-44cb-9cdc-4cda4f5bbdb8/resourceGroups/springboot/providers/Microsoft.ContainerRegistry/registries/springbootrepo"}'
+
